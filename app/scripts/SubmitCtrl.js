@@ -3,38 +3,31 @@
  */
 function SubmitCtrl($scope, $location, HacksService)
 {
-   $scope.name = "Mizzl World 1000";
-   $scope.authors = [{
-      name: "mizzl drizzl"
-   }];
-
-   $scope.description = "Welcome to my world";
-   $scope.appUrl = "http://www.google.com";
-   $scope.sourceUrl = "";
+   $scope.hack = {
+      authors: []
+   };
 
    $scope.addAuthor = function() {
-      $scope.authors.push({
+      $scope.hack.authors.push({
          name: ""
       })
    };
 
    $scope.removeAuthorAtIndex = function (index) {
-      if ($scope.authors.length <= 1) {
+      if ($scope.hack.authors.length <= 1) {
          return;
       }
-      $scope.authors.splice(index, 1);
+      $scope.hack.authors.splice(index, 1);
    };
 
-   $scope.submit = function() {
-      var hack = {
-         name: $scope.name,
-         authors: _($scope.authors).map(function(author) {
-             return author.name;
-         }),
-         description: $scope.description,
-         appUrl: $scope.appUrl,
-         sourceUrl: $scope.sourceUrl
-      };
+   $scope.submit = function () {
+      if ($scope.hackForm.$invalid) {
+         return;
+      }
+      var hack = $scope.hack;
+      hack.authors = _($scope.hack.authors).map(function (author) {
+         return author.name;
+      });
       HacksService.submitHack(hack, function(error, identifier) {
           if (error) {
              alert(error)
