@@ -5,7 +5,7 @@
 function ViewHackCtrl($scope, $routeParams, HacksService) {
    $scope.hack = {};
 
-   HacksService.fetchHackByIdentifier($routeParams.identifier, function(error, hack) {
+   HacksService.fetchHackByIdentifier($routeParams['identifier'], function(error, hack) {
        if (error) {
           alert(error);
        } else {
