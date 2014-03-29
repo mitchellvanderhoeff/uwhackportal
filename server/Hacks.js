@@ -36,6 +36,10 @@ function fetchThumbnailForHack(hack) {
 
 module.exports = {
    submitHack: function(rawHackData, callback) {
+      if (!rawHackData) {
+         callback("ERROR: Could not read hack data", null);
+         return;
+      }
       var hackData = _(rawHackData).pick(
          'name',
          'authors',

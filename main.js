@@ -5,7 +5,10 @@ var express = require('express');
 var server = express();
 var Hacks = require('./server/Hacks');
 
+server.use(express.bodyParser());
+
 server.post("/submit", function(req, res) {
+
    Hacks.submitHack(req.body, function(error, identifier) {
        if (error) {
           res.send(500, error)

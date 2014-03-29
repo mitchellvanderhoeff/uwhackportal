@@ -4,8 +4,11 @@
 angular.module('uwHackPortalApp')
    .service('HacksService', function($http) {
       this.submitHack = function(hack, callback) {
-          $http
-             .post('/submit', hack)
+          $http({
+             method: "POST",
+             url: "/submit",
+             data: hack
+          })
              .success(function(data) {
                  callback(null, data)
              })

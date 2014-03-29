@@ -6,6 +6,7 @@ var CLIENT_ID = '36a0cda3abb7eac';
 var webshot = require('webshot');
 var imgur = require('imgur-node-api');
 var path = require('path');
+var _ = require('underscore');
 
 imgur.setClientID(CLIENT_ID);
 
