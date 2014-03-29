@@ -1,0 +1,26 @@
+{
+  "name": "UWHackPortalApp",
+  "main": "app.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/mitchellvanderhoeff/uwhackportal",
+  "authors": [
+    "Mitchell Vanderhoeff <mitchellvanderhoeff@gmail.com>"
+  ],
+  "description": "top lel",
+  "keywords": [
+    "hackathon"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.15",
+    "angular-route": "~1.2.15"
+  }
+}
