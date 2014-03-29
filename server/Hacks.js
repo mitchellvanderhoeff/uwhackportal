@@ -46,8 +46,10 @@ module.exports = {
       hackData.identifier = generateIdentifier(hackData.name);
       HacksCollection.insert(hackData, function(error, hack) {
           if (error) {
+             console.log("Failed to insert hack due to: "+error);
              callback(error, null);
           } else {
+             console.log("Inserted hack: "+JSON.stringify(hack));
              callback(null, hack.identifier);
              if (isUrl(hack.appUrl)) {
                 fetchThumbnailForHack(hack);

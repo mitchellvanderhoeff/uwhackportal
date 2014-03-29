@@ -1,1 +1,14 @@
-browse
+<div class="row" ng-repeat="hack in hacks">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img ng-src="{{ hack.thumbUrl }}" alt="...">
+      <div class="caption">
+        <h3>{{ hack.name }}</h3>
+        <p>{{ hack.description }} </p>
+        <p>
+          <a ng-href="{{ hack.appUrl }}" class="btn btn-primary" role="button">Open</a>
+          <a ng-href="#/browse/{{ hack.identifier }}" class="btn btn-default" role="button">View Info</a></p>
+      </div>
+    </div>
+  </div>
+</div>

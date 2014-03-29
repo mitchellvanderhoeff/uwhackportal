@@ -16,7 +16,7 @@ angular.module('uwHackPortalApp')
 
       this.fetchHacks = function(limit, callback) {
           $http
-             .get('/fetch')
+             .get('/fetch?limit='+limit)
              .success(function(data) {
                  callback(null, data)
              })

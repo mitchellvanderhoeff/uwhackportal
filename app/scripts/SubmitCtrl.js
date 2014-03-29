@@ -3,8 +3,14 @@
  */
 function SubmitCtrl($scope, $location, HacksService)
 {
-   $scope.name = "";
-   $scope.authors = [];
+   $scope.name = "Mizzl World 1000";
+   $scope.authors = [{
+      name: "mizzl drizzl"
+   }];
+
+   $scope.description = "Welcome to my world";
+   $scope.appUrl = "http://www.google.com";
+   $scope.sourceUrl = "";
 
    $scope.addAuthor = function() {
       $scope.authors.push({
