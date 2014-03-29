@@ -3,7 +3,7 @@
  */
 var app = angular.module('uwHackPortalApp', ['ngRoute']);
 
-app.config(['$routeProvider', function($routeProvider) {
+app.config(function($routeProvider) {
    $routeProvider
       .when('/home', {
          templateUrl: 'views/home.html',
@@ -17,4 +17,7 @@ app.config(['$routeProvider', function($routeProvider) {
          templateUrl: 'views/browse.html',
          controller: 'BrowseCtrl'
       })
-}]);
+      .otherwise({
+         redirectTo: '/home'
+      })
+});

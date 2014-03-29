@@ -20,3 +20,5 @@ server.get("/fetch", function(req, res) {
 });
 
 server.use(express.static(__dirname + '/app'));
+
+server.listen(process.env.PORT || 9000);
