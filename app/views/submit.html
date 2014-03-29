@@ -1,1 +1,47 @@
-submit
+<div class="jumbotron">
+  <h1 style="text-align: center">Submit your Hack</h1>
+</div>
+<div class="col-lg-10 col-lg-offset-1"
+     style="background: #f5f5ff; border-radius: 5px; padding: 10px">
+  <form role="form">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" placeholder="Flappy Goose" ng-model="name">
+    </div>
+    <label>
+      Authors
+    </label>
+    <a href="" ng-click="addAuthor()" class="btn btn-small">
+      <i class="glyphicon glyphicon-plus"></i>
+    </a>
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="author in authors">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Rick Astley" ng-model="author.name">
+          <span class="input-group-btn">
+            <button class="btn btn-default" ng-click="removeAuthorAtIndex($index)">
+              <i class="glyphicon glyphicon-minus"></i>
+            </button>
+          </span>
+        </div>
+      </li>
+    </ul>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea class="form-control" ng-model="description">
+
+      </textarea>
+    </div>
+    <div class="form-group">
+      <label>App URL</label>
+      <input type="text" class="form-control" placeholder="https://flappygoose.herokuapp.com" ng-model="appUrl">
+    </div>
+    <div class="form-group">
+      <label>Source URL (optional)</label>
+      <input type="text" class="form-control" placeholder="https://www.github.com/muchcode/flappygoose" ng-model="sourceUrl">
+    </div>
+    <button class="btn btn-default btn-block" ng-click="submit()">
+      <h4>Submit</h4>
+    </button>
+  </form>
+</div>
