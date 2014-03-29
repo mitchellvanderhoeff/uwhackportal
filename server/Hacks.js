@@ -7,6 +7,7 @@ var db = mongojs(process.env.MONGOHQURL || 'uwhack');
 var HacksCollection = db.collection('hacks');
 var _ = require('underscore');
 var Case = require('case');
+var ThumbnailFetcher = require('./ThumbnailFetcher');
 
 function generateIdentifier(name) {
    var identifier = Case.snake(name);
@@ -20,21 +21,37 @@ function generateIdentifier(name) {
    return identifier;
 }
 
+function isUrl(string) {
+   return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(string)
+}
+
+function fetchThumbnailForHack(hack) {
+   ThumbnailFetcher.fetchThumbnailForURL(hack.appUrl, function(error, thumbUrl) {
+       if (!error) {
+          hack.thumbUrl = thumbUrl;
+          HacksCollection.save(thumbUrl);
+       }
+   })
+}
+
 module.exports = {
    submitHack: function(rawHackData, callback) {
-      var hack = _(rawHackData).pick(
+      var hackData = _(rawHackData).pick(
          'name',
          'authors',
          'description',
          'appUrl',
          'sourceUrl'
       );
-      hack.identifier = generateIdentifier(hack.name);
-      HacksCollection.insert(hack, function(error) {
+      hackData.identifier = generateIdentifier(hackData.name);
+      HacksCollection.insert(hackData, function(error, hack) {
           if (error) {
              callback(error, null);
           } else {
              callback(null, hack.identifier);
+             if (isUrl(hack.appUrl)) {
+                fetchThumbnailForHack(hack);
+             }
           }
       });
    },
