@@ -30,7 +30,13 @@ module.exports = {
          'sourceUrl'
       );
       hack.identifier = generateIdentifier(hack.name);
-      HacksCollection.insert(hack, callback);
+      HacksCollection.insert(hack, function(error) {
+          if (error) {
+             callback(error, null);
+          } else {
+             callback(null, hack.identifier);
+          }
+      });
    },
    fetchHacks: function(limit, callback) {
       HacksCollection.find().limit(limit || 1).toArray(callback);
