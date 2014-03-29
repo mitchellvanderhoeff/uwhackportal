@@ -1,0 +1,22 @@
+{
+  "name": "UWHackPortal",
+  "version": "0.1.0",
+  "description": "Portal for browsing and submitting hacks at the UW Hackathon 2014",
+  "main": "main.js",
+  "dependencies": {
+    "express": "~3.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/mitchellvanderhoeff/uwhackportal"
+  },
+  "keywords": [
+    "hackathon"
+  ],
+  "author": "Mitchell Van Der Hoeff",
+  "license": "ISC"
+}
