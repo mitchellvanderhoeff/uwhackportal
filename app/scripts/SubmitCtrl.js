@@ -1,13 +1,12 @@
 /**
  * Created by mitch on 2014-03-29.
  */
-function SubmitCtrl($scope, $location, HacksService)
-{
+function SubmitCtrl($scope, $location, HacksService) {
    $scope.hack = {
       authors: []
    };
 
-   $scope.addAuthor = function() {
+   $scope.addAuthor = function () {
       $scope.hack.authors.push({
          name: ""
       })
@@ -28,12 +27,12 @@ function SubmitCtrl($scope, $location, HacksService)
       hack.authors = _($scope.hack.authors).map(function (author) {
          return author.name;
       });
-      HacksService.submitHack(hack, function(error, identifier) {
-          if (error) {
-             alert(error)
-          } else {
-             $location.path('/browse/'+identifier);
-          }
+      HacksService.submitHack(hack, function (error, identifier) {
+         if (error) {
+            alert(error)
+         } else {
+            $location.path('/browse/' + identifier);
+         }
       });
    };
 

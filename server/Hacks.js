@@ -7,7 +7,6 @@ var db = mongojs(process.env.MONGOHQURL || 'uwhack');
 var HacksCollection = db.collection('hacks');
 var _ = require('underscore');
 var Case = require('case');
-var ThumbnailFetcher = require('./ThumbnailFetcher');
 
 function generateIdentifier(name) {
    var identifier = Case.snake(name);
@@ -19,19 +18,6 @@ function generateIdentifier(name) {
    }
    identifier = identifier + "_" + unique;
    return identifier;
-}
-
-function isUrl(string) {
-   return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(string)
-}
-
-function fetchThumbnailForHack(hack) {
-   ThumbnailFetcher.fetchThumbnailForURL(hack.appUrl, function(error, thumbUrl) {
-       if (!error) {
-          hack.thumbUrl = thumbUrl;
-          HacksCollection.save(thumbUrl);
-       }
-   })
 }
 
 module.exports = {
@@ -55,9 +41,6 @@ module.exports = {
           } else {
              console.log("Inserted hack: "+JSON.stringify(hack));
              callback(null, hack.identifier);
-             if (isUrl(hack.appUrl)) {
-                fetchThumbnailForHack(hack);
-             }
           }
       });
    },
