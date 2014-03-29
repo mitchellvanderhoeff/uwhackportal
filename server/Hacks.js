@@ -11,7 +11,7 @@ var ThumbnailFetcher = require('./ThumbnailFetcher');
 
 function generateIdentifier(name) {
    var identifier = Case.snake(name);
-   var charMap = "wowmuchdogecoin1234567890";
+   var charMap = "abcdefghijklmnopqrstuvwxysABCDEFGHIJKLMNOPQRSTUVWXYS1234567890";
    var unique = "";
    for(var i = 0; i < 10; i++) {
       var random = Math.floor((Math.random() * charMap.length));

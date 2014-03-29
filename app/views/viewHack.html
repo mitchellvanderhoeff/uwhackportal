@@ -1,1 +1,25 @@
-{{ hack | json }}
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>{{ hack.name }}</h1>
+    </div>
+    <div class="col-md-4">
+      <img ng-src="{{ hack.thumbUrl }}" ng-if="hack.thumbUrl">
+    </div>
+  </div>
+  <br>
+
+  <p>{{ hack.description }}</p>
+  <br>
+
+  <p>
+    <strong>Made by</strong>
+  <ul>
+    <li ng-repeat="author in hack.authors">
+      <span>{{ author }}</span>
+    </li>
+  </ul>
+  <a class="btn btn-primary btn-lg" ng-href="{{ hack.appUrl }}">Open Hack</a>
+  <a class="btn btn-primary btn-lg" ng-href="{{ hack.sourceUrl }}" ng-if="hack.sourceUrl">View Source</a>
+  </p>
+</div>

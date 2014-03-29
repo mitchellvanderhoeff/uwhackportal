@@ -15,10 +15,10 @@ module.exports = {
       var fileName = _.uniqueId('website-thumbnail') + ".png";
       webshot(url, fileName, function(error) {
            if (error) {
-              callback(error)
+              callback(error, null)
            } else {
-              imgur.upload(path.join(__dirname, fileName), function(error, response) {
-                  callback(error, response.data.link);
+              imgur.upload(path.join(__dirname, fileName), function(imgurError, response) {
+                  callback(imgurError, response.data.link);
               })
            }
        })
