@@ -20,5 +20,10 @@ module.exports = {
    },
    fetchHacks: function(limit, callback) {
       HacksCollection.find().limit(limit || 1).toArray(callback);
+   },
+   fetchHackByIdentifier: function(identifier, callback) {
+      HacksCollection.findOne({
+         identifier: identifier
+      }, callback)
    }
 };

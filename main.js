@@ -19,6 +19,17 @@ server.get("/fetch", function(req, res) {
    });
 });
 
+server.get("/fetch/:identifier", function(req, res) {
+   var identifier = req.param('identifier');
+   Hacks.fetchHackByIdentifier(identifier, function(error, hack) {
+       if (error) {
+          res.send(500, error)
+       } else {
+          res.send(hack)
+       }
+   })
+});
+
 server.use(express.static(__dirname + '/app'));
 
 server.listen(process.env.PORT || 9000);

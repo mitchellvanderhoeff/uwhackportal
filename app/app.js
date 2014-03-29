@@ -16,6 +16,10 @@ app.config(function($routeProvider) {
          templateUrl: 'views/browse.html',
          controller: 'BrowseCtrl'
       })
+      .when('/browse/:identifier', {
+         templateUrl: 'views/viewHack.html',
+         controller: 'ViewHackCtrl'
+      })
       .otherwise({
          redirectTo: '/home'
       })
